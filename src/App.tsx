@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Login} from "./components/login/Login";
+import {Register} from "./components/Register";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {Nav} from "./components/Nav";
+import {Home} from "./components/Home";
+import {Forgot} from "./components/Forgot";
+import {Reset} from "./components/Reset";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return <BrowserRouter>
+        <Nav/>
+
+        <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/forgot" element={<Forgot/>}/>
+            <Route path="/reset/:token" element={<Reset/>}/>
+        </Routes>
+    </BrowserRouter>;
 }
 
 export default App;
